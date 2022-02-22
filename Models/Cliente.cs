@@ -6,14 +6,9 @@ using System.Collections.Generic;
 namespace API.Models
 {
     public class Cliente : PersonMetadata
-    {
-        
-        [DataType(DataType.Date)]
-        public DateTime FechaNacimiento { get; set; }
+    {        
         [DataType(DataType.PhoneNumber)]
         public string Telefono { get; set; }
-        [DataType(DataType.EmailAddress)]
-        public string Correo { get; set; }
         public string Domicilio { get; set; }
 
         public ICollection<Prestamo> Prestamos { get; set; }
