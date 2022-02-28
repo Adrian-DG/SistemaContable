@@ -47,14 +47,15 @@ namespace API.Repositories
             
         }
 
-        public Task<T> GetByIdAsync(object id)
+        public async Task<T> GetByIdAsync(object id)
         {
-            throw new System.NotImplementedException();
+            return await _repo.FindAsync(id); 
         }
 
-        public Task UpdateAsync(T entity)
+        public void UpdateAsync(T entity)
         {
-            throw new System.NotImplementedException();
+            _context.Attach(entity);
+            _context.Entry<T>(entity).State = EntityState.Modified;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace API.Interfaces
         PagedDataDTO<T> GetAllAsync(PaginationFilterDTO<T> filters);
         Task<T> GetByIdAsync(object id);
         Task CreateAsync(T model);
-        Task UpdateAsync(T entity);
+        void UpdateAsync(T entity);
         Task DeleteAsync(object id);
 
     }

@@ -18,6 +18,7 @@ namespace API.Models
 
         public Cliente Cliente { get; set; }
         public ICollection<Cuota> Cuotas { get; set; }
-      
+    
+
     }
 }

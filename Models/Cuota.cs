@@ -7,11 +7,11 @@ namespace API.Models
 {
     public class Cuota : ModelMetadata
     {
+        public DateTime FechaPendientePagar { get; set; }
+        public DateTime FechaPagoConfirmado { get; set; }
+        public int DiasMora { get; set; }
         public Decimal Monto { get; set; }
         public Decimal MontoFinal { get; set; }
-        public DateTime FechaPagoConfirmado { get; set; }
-        public DateTime FechaPendientePagar { get; set; }
-        public int DiasMora { get; set; }
         public Decimal Recargo { get; set; }
         public Estado Estado { get; set; }
         public Prestamo Prestamo { get; set; }
@@ -21,7 +21,7 @@ namespace API.Models
             var fechaPendiente = this.FechaPendientePagar;
             var fechaConfirmada = this.FechaPagoConfirmado;
 
-            return (fechaPendiente.Day > fechaConfirmada.Day) ? 0 : (fechaConfirmada.Day - fechaPendiente.Day);
+            return (fechaPendiente.Day >= fechaConfirmada.Day) ? 0 : (fechaConfirmada.Day - fechaPendiente.Day);
         }
 
         /* 
@@ -36,15 +36,15 @@ namespace API.Models
             switch(modalidadPago)
             {
                 case Modalidad.Semanal:
-                    this.MontoFinal += (Decimal.Add(this.Monto, 9m)) * this.DiasMora;
+                    this.MontoFinal += (Decimal.Add(this.Monto, 4m)) * this.DiasMora;
                 break;
 
                 case Modalidad.Quincenal:
-                    this.MontoFinal += (Decimal.Add(this.Monto, 9m)) * this.DiasMora;
+                    this.MontoFinal += (Decimal.Add(this.Monto, 4m)) * this.DiasMora;
                 break;
 
                 case Modalidad.Mensual:
-                    this.MontoFinal += (Decimal.Add(this.Monto, 9m)) * this.DiasMora;
+                    this.MontoFinal += (Decimal.Add(this.Monto, 4m)) * this.DiasMora;
                 break;
                 
                 default:
