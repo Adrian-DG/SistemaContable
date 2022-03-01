@@ -13,7 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using System.IdentityModel.Tokens.Jwt;
 
-namespace SistemaContable.Repositories
+namespace API.Repositories
 {
     public class AuthRepository : IAuthRepository
     {
